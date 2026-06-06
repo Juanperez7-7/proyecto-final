@@ -1,0 +1,395 @@
+/* ==========================================================================
+   ESTILOS GENERALES Y MAQUETACIÓN CLÁSICA
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fcf8f2; 
+    color: #333333;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   BARRA DE NAVEGACIÓN SUPERIOR CENTRADA
+   ========================================================================== */
+.panel-navegacion {
+    background-color: #111111;
+    width: 100%;
+    padding: 15px 0px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+    text-align: center; 
+    position: relative;
+    z-index: 1000;
+}
+
+.contenedor-navegacion-central {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.grupo-pestanas-centro {
+    display: block;
+    margin-bottom: 12px;
+}
+
+.control-pestana {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #111111;
+    border: 2px solid #ffffff;
+    padding: 10px 22px;
+    margin: 5px 6px;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.control-pestana:hover {
+    background-color: #e6e6e6;
+    border-color: #e6e6e6;
+    transform: translateY(-2px);
+}
+
+.control-pestana.active {
+    background-color: #c0392b; 
+    color: #ffffff;
+    border-color: #c0392b;
+}
+
+/* Enlace decorado del Repositorio */
+.grupo-developer-centro {
+    display: block;
+    margin-top: 5px;
+}
+
+.repositorio-link-decorado {
+    display: inline-block;
+    background: #1f1f1f;
+    color: #00ffcc; 
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 8px 18px;
+    border: 1px solid #00ffcc;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 8px rgba(0, 255, 204, 0.2);
+}
+
+.repositorio-link-decorado:hover {
+    background: #00ffcc;
+    color: #111111;
+    box-shadow: 0px 0px 15px rgba(0, 255, 204, 0.6);
+    transform: scale(1.03);
+}
+
+.icono-git {
+    margin-right: 5px;
+}
+
+/* ==========================================================================
+   PORTADA PRINCIPAL CON EL MÉTODO DE IMAGEN EN HTML
+   ========================================================================== */
+.hero-seccion {
+    width: 100%;
+    height: 75vh;
+    min-height: 450px;
+    position: relative; /* Clave para contener los elementos absolutos de adentro */
+    overflow: hidden; /* Corta lo que sobresalga de la imagen */
+    background-color: #333333; /* Respaldo */
+}
+
+/* Convertimos la etiqueta img en fondo de pantalla completo */
+.imagen-fondo-html {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Hace que se estire y adapte sin deformarse */
+    z-index: 1; /* Al fondo */
+}
+
+/* Filtro oscuro para que las letras blancas resalten impecable */
+.capa-oscura-filtro {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65); /* Color negro transparente */
+    z-index: 2; /* Por encima de la imagen, por debajo de las letras */
+}
+
+/* El bloque contenedor del texto */
+.hero-interior {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85%;
+    max-width: 800px;
+    z-index: 3; /* Al frente de todo */
+    text-align: center;
+}
+
+.hero-interior h1 {
+    color: #ffffff;
+    font-size: 46px;
+    font-weight: 800;
+    line-height: 1.2;
+    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.7);
+    margin-bottom: 20px;
+}
+
+.instruccion-inicial {
+    color: #f1f1f1;
+    font-size: 18px;
+    font-weight: 400;
+    text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 10px 20px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+/* ==========================================================================
+   ESTRUCTURA DE CONTENIDOS Y MÓDULOS (CON FLATS TRADICIONALES)
+   ========================================================================== */
+.contenedor-principal {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+}
+
+.tab-content {
+    display: none; 
+}
+
+.btn-volver {
+    display: inline-block;
+    background-color: #7f8c8d;
+    color: #ffffff;
+    border: none;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    transition: background 0.2s;
+}
+
+.btn-volver:hover {
+    background-color: #95a5a6;
+}
+
+.bloque-simulador {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
+    border-left: 6px solid #c0392b; 
+    margin-bottom: 30px;
+}
+
+.encabezado-simulador h2 {
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.proposito-herramienta {
+    font-size: 15px;
+    color: #555555;
+    margin-bottom: 20px;
+}
+
+/* Tablas de prueba */
+.guia-evaluacion {
+    background-color: #fcf3f2;
+    border: 1px solid #fadbd8;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.guia-evaluacion h4 {
+    color: #c0392b;
+    margin-bottom: 8px;
+}
+
+.tabla-test {
+    width: 100%;
+    max-width: 500px;
+    border-collapse: collapse;
+    margin: 12px 0;
+    background-color: #ffffff;
+}
+
+.tabla-test th, .tabla-test td {
+    border: 1px solid #dcdde1;
+    padding: 8px 12px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.tabla-test th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.nota-esperada {
+    font-size: 13.5px;
+    color: #2c3e50;
+    margin-top: 5px;
+}
+
+/* Columnas usando floats */
+.interfaz-trabajo {
+    width: 100%;
+    clear: both;
+    overflow: hidden; 
+}
+
+.zona-formulario {
+    width: 48%;
+    float: left;
+    margin-right: 4%;
+}
+
+.zona-reportes {
+    width: 48%;
+    float: left;
+}
+
+/* Elementos de Formulario */
+.campo-entrada {
+    margin-bottom: 15px;
+}
+
+.campo-entrada label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.campo-entrada input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.acciones-formulario {
+    margin-top: 20px;
+}
+
+.btn-ejecutar {
+    display: inline-block;
+    background-color: #27ae60;
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.btn-ejecutar:hover {
+    background-color: #2ecc71;
+}
+
+.btn-reiniciar {
+    display: inline-block;
+    background-color: #dcdde1;
+    color: #2c3e50;
+    border: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn-reiniciar:hover {
+    background-color: #b2bec3;
+}
+
+/* Resultados */
+.alerta-box {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #c3e6cb;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ==========================================================================
+   PIE DE PÁGINA (FOOTER)
+   ========================================================================== */
+.pie-pagina-sitio {
+    background-color: #111111;
+    color: #ffffff;
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.firma-desarrollo {
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.enlace-footer {
+    color: #00ffcc;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.enlace-footer:hover {
+    text-decoration: underline;
+}
+
+.separador-intermedio {
+    color: #555555;
+    margin: 0 10px;
+}
+
+.linea-decorativa {
+    border: 0;
+    height: 1px;
+    background: #333333;
+    margin: 20px auto;
+    width: 80%;
+}
+
+.mensaje-institucional {
+    font-style: italic;
+    font-size: 13px;
+    color: #aaaaaa;
+    max-width: 700px;
+    margin: 0 auto;
+}

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escudo Económico Paceño - Herramientas de Análisis</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <nav class="panel-navegacion">
+        <div class="contenedor-navegacion-central">
+            
+            <div class="grupo-pestanas-centro">
+                <button class="control-pestana" onclick="abrirModulo(event, 'carburantes')">Combustibles</button>
+                <button class="control-pestana" onclick="abrirModulo(event, 'alimentos')">Canasta Familiar</button>
+                <button class="control-pestana" onclick="abrirModulo(event, 'transporte')">Desvíos y Rutas</button>
+                <button class="control-pestana" onclick="abrirModulo(event, 'poder-adquisitivo')">Gastos y Finanzas</button>
+            </div>
+            
+            <div class="grupo-developer-centro">
+                <a href="#" id="git-link-main" target="_blank" class="repositorio-link-decorado">
+                    <span class="icono-git">📊</span> Ver Código Fuente en GitHub
+                </a>
+            </div>
+
+        </div>
+    </nav>
+
+    <header id="main-cover" class="hero-seccion">
+        
+        <img class="imagen-fondo-html" src="imagenes/fondo-bolivia.jpg" alt="Fondo Bolivia">
+        
+        <div class="capa-oscura-filtro"></div>
+
+        <div class="hero-interior">
+            <h1>Escudo Económico Paceño<br>Monitoreo Ciudadano</h1>
+            <p class="instruccion-inicial">Por favor, elige una de las herramientas de simulación en la barra de arriba para evaluar tu situación.</p>
+        </div>
+    </header>
+
+    <main class="contenedor-principal">
+
+        <div id="carburantes" class="tab-content">
+            <button class="btn-volver" onclick="volverAPortada()">← Regresar a la Portada</button>
+            
+            <section class="bloque-simulador">
+                <div class="encabezado-simulador">
+                    <h2>Auditoría de Reservas de Combustible</h2>
+                    <p class="proposito-herramienta">
+                        <strong>Objetivo del análisis:</strong> Determinar con exactitud la ventana de tiempo útil en estaciones de servicio ante picos de demanda inusuales o retrasos de suministro.
+                    </p>
+                </div>
+
+                <div class="guia-evaluacion">
+                    <h4>Parámetros de Verificación (Caso Test)</h4>
+                    <p>Ingresa estos valores de control para auditar la precisión matemática del sistema:</p>
+                    <table class="tabla-test">
+                        <thead>
+                            <tr>
+                                <th>Variable</th>
+                                <th>Muestra de Prueba</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Reserva inicial</td><td>10000 litros</td></tr>
+                            <tr><td>Consumo diario</td><td>1200 litros</td></tr>
+                            <tr><td>Reabastecimiento diario</td><td>300 litros</td></tr>
+                            <tr><td>Nivel crítico</td><td>2000 litros</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="nota-esperada"><strong>Proyección requerida:</strong> El software debe establecer el día exacto en que los inventarios descienden hasta la zona de alerta.</p>
+                </div>
+
+                <div class="interfaz-trabajo">
+                    <div class="zona-formulario">
+                        <form id="form-carburantes" onsubmit="event.preventDefault(); procesarCarburantes();">
+                            <div class="campo-entrada">
+                                <label for="carb-inicial">Volumen Inicial de Carburante (Litros):</label>
+                                <input type="number" id="carb-inicial" required min="1" placeholder="Ej. 10000">
+                            </div>
+                            <div class="campo-entrada">
+                                <label for="carb-consumo">Demanda Diaria Estimada (Litros):</label>
+                                <input type="number" id="carb-consumo" required min="1" placeholder="Ej. 1200">
+                            </div>
+                            <div class="campo-entrada">
+                                <label for="carb-reabastecimiento">Ingreso Diario / Reabastecimiento (Litros):</label>
+                                <input type="number" id="carb-reabastecimiento" required min="0" placeholder="Ej. 300">
+                            </div>
+                            <div class="campo-entrada">
+                                <label for="carb-critico">Umbral Crítico de Seguridad (Litros):</label>
+                                <input type="number" id="carb-critico" required min="0" placeholder="Ej. 2000">
+                            </div>
+                            <div class="acciones-formulario">
+                                <button type="submit" class="btn-ejecutar">Calcular Proyección</button>
+                                <button type="button" class="btn-reiniciar" onclick="limpiarModulo('form-carburantes', 'res-carburantes-alerta', 'res-carburantes-comparativo')">Limpiar Formulario</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="zona-reportes">
+                        <div id="res-carburantes-alerta" class="alerta-box hidden"></div>
+                        <div id="res-carburantes-comparativo" class="hidden"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="alimentos" class="tab-content">
+            <button class="btn-volver" onclick="volverAPortada()">← Regresar a la Portada</button>
+            
+            <section class="bloque-simulador">
+                <div class="encabezado-simulador">
+                    <h2>Calculadora de Fluctuación en Alimentos</h2>
+                    <p class="proposito-herramienta">
+                        <strong>Objetivo del análisis:</strong> Cuantificar el impacto financiero real causado por el alza de costos en insumos básicos sobre el gasto mensual familiar.
+                    </p>
+                </div>
+
+                <div class="guia-evaluacion">
+                    <h4>Parámetros de Verificación (Caso Test)</h4>
+                    <p>Secuencia recomendada para evaluar el comportamiento matricial del simulador:</p>
+                    <table class="tabla-test">
+                        <thead>
+                            <tr>
+                                <th>Artículo</th>
+                                <th>Costo Anterior</th>
+                                <th>Costo Actual</th>
+                                <th>Volumen Mensual</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Arroz</td><td>8 Bs</td><td>11 Bs</td><td>10 unidades</td></tr>
+                            <tr><td>Papa</td><td>7 Bs</td><td>10 Bs</td><td>8 unidades</td></tr>
+                            <tr><td>Aceite</td><td>12 Bs</td><td>18 Bs</td><td>4 unidades</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="nota-esperada"><strong>Proyección requerida:</strong> La aplicación debe estructurar una comparativa del desembolso histórico contra el actual, indicando el margen de incremento.</p>
+                </div>
+
+                <div class="interfaz-trabajo">
+                    <div class="zona-formulario">
+                        <form id="form-alimentos" onsubmit="event.preventDefault(); procesarAlimentos();">
+                            <div class="campo-entrada">
+                                <label for="ali-producto">Descripción del Producto:</label>
+                                <input type="text" id="ali-producto" required placeholder="Ej. Arroz, Papa, Aceite">
+                            </div>
+                            <div class="campo-entrada">
+                                <label for="ali-anterior">Precio Histórico Unitario (Bs):</label>
+                                <input type="number" id="ali-anterior" step="0.1" required min="0.1" placeholder="Ej. 8">
+                            </div>
+                            <div class="campo-entrada">
+                                <label for="ali-actual">Precio de Mercado Actual (Bs):</label>
+                                <input type="number" id="ali-actual" step="0.1" required min="0.1" placeholder="Ej. 11">
+                            </div>
+                            <div class="campo-entrada">
+                                <label for="ali-cantidad">Tasa de Consumo Mensual:</label>
+                                <input type="number" id="ali-cantidad" step="0.1" required min="0.1" placeholder="Ej. 10">
+                            </div>
+                            <div class="acciones-formulario">
+                                <button type="submit" class="btn-ejecutar">Evaluar Variación</button>
+                                <button type="button" class="btn-reiniciar" onclick="limpiarModulo('form-alimentos', 'res-alimentos-alerta', 'res-alimentos-comparativo')">Limpiar Formulario</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="zona-reportes">
+                        <div id="res-alimentos-alerta" class="alerta-box hidden"></div>
+                        <div id="res-alimentos-comparativo" class="hidden"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="transporte" class="tab-content">
+            <button class="btn-volver" onclick="volverAPortada()">← Regresar a la Portada</button>
+            
+            <section class="bloque-simulador">
+                <div class="encabezado-simulador">
+                    <h2>Simulador de Costos por Contingencias Viales</h2>
+                    <p class="proposito-herramienta">
+                        <strong>Objetivo del análisis:</strong> Evaluar las pérdidas financieras semanales generadas por la necesidad de tomar rutas alternas o desvíos debido a bloqueos.
+                    </p>
+                </div>
+
+                <div class="guia-evaluacion">
+                    <h4>Parámetros de Verificación (Caso Test)</h4>
+                    <p>Configure estos datos base para examinar los bucles de costos en transporte:</p>
+                    <table class="tabla-test">
+                        <thead>
+                            <tr>
+                                <th>Variable operativa</th>
+                                <th>Valor de Verificación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Distancia normal</td><td>10 km</td></tr>
+                            <tr><td>Distancia con desvío</td><td>16 km</td></tr>
+                            <tr><td>Costo por km</td><td>2 Bs</td></tr>
+                            <tr><td>Viajes por semana</td><td>5</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="nota-esperada"><strong>Proyección requerida:</strong> El sistema debe computar el recargo neto semanal que se absorbe por los kilómetros excedentes de la ruta.</p>
+                </div>
+
+                <div class="interfaz-trabajo">
+                    <div class="zona-formulario">
+                        <form id="form-transporte" onsubmit="event.preventDefault(); procesarTransporte();">
+                            <div class="campo-entrada">
+                                <label for="trans-dist-normal">Longitud Habitual del Trayecto (Km):</label>
+                                <input type="number" id="trans-dist-normal" step="0.1" required min="0.1" placeholder="Ej. 10">
+                            </div>
+                            <div class="campo-entrada">
+                                <label for="trans-dist-desvio">Longitud del Trayecto Modificado (Km):</label>
+                                <input type="number" id="trans-dist-desvio" step="0.1" required min="0.1" placeholder="Ej. 16">
+                            </div>
+                            <div class="campo-entrada">
+                                <label for="trans-costo-km">Tarifa o Costo Operativo por Kilómetro (Bs):</label>
+                                <input type="number" id="trans-costo-km" step="0.1" required min="0.1" placeholder="Ej. 2">
+                            </div>
+                            <div class="campo-entrada">
+                                <label for="trans-viajes">Frecuencia de Viajes Semanales:</label>
+                                <input type="number" id="trans-viajes" required min="1" placeholder="Ej. 5">
+                            </div>
+                            <div class="acciones-formulario">
+                                <button type="submit" class="btn-ejecutar">Medir Pérdida Extra</button>
+                                <button type="button" class="btn-reiniciar" onclick="limpiarModulo('form-transporte', 'res-transporte-alerta', 'res-transporte-comparativo')">Limpiar Formulario</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="zona-reportes">
+                        <div id="res-transporte-alerta" class="alerta-box hidden"></div>
+                        <div id="res-transporte-comparativo" class="hidden"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="poder-adquisitivo" class="tab-content">
+            <button class="btn-volver" onclick="volverAPortada()">← Regresar a la Portada</button>
+            
+            <section class="bloque-simulador">
+                <div class="encabezado-simulador">
+                    <h2>Balance de Viabilidad Presupuestaria</h2>
+                    <p class="proposito-herramienta">
+                        <strong>Objetivo del análisis:</strong> Efectuar un balance contable lineal inmediato para comprobar si los fondos líquidos del hogar logran cubrir la totalidad de un plan de compras determinado.
+                    </p>
+                </div>
+
+                <div class="guia-evaluacion">
+                    <h4>Parámetros de Verificación (Caso Test)</h4>
+                    <p>Carga estos indicadores para comprobar la detección automática de déficits:</p>
+                    <table class="tabla-test">
+                        <thead>
+                            <tr>
+                                <th>Indicador Contable</th>
+                                <th>Valor de Verificación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Presupuesto disponible</td><td>500 Bs</td></tr>
+                            <tr><td>Total de compra</td><td>580 Bs</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="nota-esperada"><strong>Proyección requerida:</strong> La lógica web debe advertir el saldo negativo, bloqueando la transacción imaginaria y notificando el monto exacto faltante.</p>
+                </div>
+
+                <div class="interfaz-trabajo">
+                    <div class="zona-formulario">
+                        <form id="form-poder" onsubmit="event.preventDefault(); procesarPoderAdquisitivo();">
+                            <div class="campo-entrada">
+                                <label for="poder-ingreso">Fondos Financieros Disponibles (Bs):</label>
+                                <input type="number" id="poder-ingreso" required min="1" placeholder="Ej. 500">
+                            </div>
+                            <div class="campo-entrada">
+                                <label for="poder-gasto-actual">Costo Integrado del Consumo (Bs):</label>
+                                <input type="number" id="poder-gasto-actual" required min="0" placeholder="Ej. 580">
+                            </div>
+                            <div class="acciones-formulario">
+                                <button type="submit" class="btn-ejecutar">Verificar Cobertura</button>
+                                <button type="button" class="btn-reiniciar" onclick="limpiarModulo('form-poder', 'res-poder-alerta', 'res-poder-comparativo')">Limpiar Formulario</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="zona-reportes">
+                        <div id="res-poder-alerta" class="alerta-box hidden"></div>
+                        <div id="res-poder-comparativo" class="hidden"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="pie-pagina-sitio">
+        <div class="creditos-autor">
+            <p class="firma-desarrollo">Desarrollador Responsable: <strong>Juan de Dios Pérez Monroy</strong></p>
+            <div class="plataformas-enlaces">
+                <a href="#" id="git-link-footer" target="_blank" class="enlace-footer">Repositorio GitHub</a>
+                <span class="separador-intermedio">|</span>
+                <a href="#" class="enlace-footer">Sitio Web Oficial</a> 
+            </div>
+        </div>
+        <hr class="linea-decorativa">
+        <p class="mensaje-institucional">"Por muy larga que sea la tormenta, el sol siempre vuelve a brillar. Bolivia ha pasado pruebas duras antes y el país siempre ha sabido levantarse. La patria se construye dialogando y unidos saldremos adelante."</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
